@@ -32,13 +32,18 @@ public class MazeOperations {
         // MBR = Maze Boundary Row variable
         final int MBCLow = 0, MBRLow = 0;
         final int MBCHigh = 14, MBRHigh = 14;
+        // final variable to use for direction changes and traversing maze
+        final int wall = 0;
+        final int emptyPath = 1;
+        final int visited = 3;
+        final int backtrack = 7;
 
         // Tests whether we are at the end of the maze. If yes, return true. If not, keep going.
         if(traverseMaze(theMaze, row, col) == traverseMaze(theMaze, 14, 14))
             return true;
         else{
             if (theMaze[row][col]== 0){
-                traverseMaze(theMaze, row, col + 1);
+                traverseMaze(theMaze, row, col - 1);
                 return false;
             }
             else if(theMaze[row][col] == 1){
