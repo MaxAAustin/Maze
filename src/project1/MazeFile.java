@@ -1,6 +1,5 @@
 package project1;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -17,17 +16,16 @@ public class MazeFile {
         try {
             System.out.println("What is the name of your file? ");
             file = fileName.nextLine();
-            inputFile = new Scanner(new FileReader(file));
-            for(int i = 0; i <=14; i++){
-                for(int j = 0; j <= i; j++){
-                    theMaze[i][j] = inputFile.nextInt();
-                    System.out.print(theMaze);
-                }
-            }
-
+            inputFile = new Scanner(file);
+            MazeOperations.fillMaze(theMaze, inputFile);
+            MazeOperations.printMaze(theMaze);
+            MazeOperations.traverseMaze(theMaze, 0,0);
+            MazeOperations.printMaze(theMaze);
         }
         catch (IOException e){
             System.out.print("Sorry! We didn\'t find it! \nPlease check your file name and try again!");
         }
+
+
     }
 }
