@@ -9,13 +9,12 @@ public class MazeFile {
 
     public static void main(String[] args) throws IOException{
         Scanner fileName = new Scanner(System.in);
-        String file;
         Scanner inputFile = null;
         int[][] theMaze =  new int[15][15];
 
         try {
             System.out.println("What is the name of your file? ");
-            file = fileName.nextLine();
+            String file = fileName.nextLine();
             inputFile = new Scanner(file);
             MazeOperations.fillMaze(theMaze, inputFile);
             MazeOperations.printMaze(theMaze);
