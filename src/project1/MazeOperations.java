@@ -36,23 +36,23 @@ public class MazeOperations {
         // Tests whether we are at the end of the maze. If yes, return true. If not, keep going.
         if(traverseMaze(theMaze, row, col) == traverseMaze(theMaze, 14, 14))
             return true;
-        else if((theMaze[row][col] == 1) & (col <= MBCHigh & col >= MBCLow) & (row <= MBRHigh & row >= MBRLow)){
-            theMaze[row][col] = 3;
-            traverseMaze(theMaze, row, col+1);
-            return false;}
-
-        else if (theMaze[row][col]== 0){
-                theMaze[row][col] = 7;
+        else{
+            if (theMaze[row][col]== 0){
                 traverseMaze(theMaze, row, col + 1);
                 return false;
             }
-        }
-
-        else if((theMaze[row][col] == 3) & (col <= MBCHigh & col >= MBCLow) & (row <= MBRHigh & row >= MBRLow)){
+            else if(theMaze[row][col] == 1){
+                theMaze[row][col] = 3;
+                traverseMaze(theMaze, row, col+1);
+                return false;
+            }
             /* Tests to see if next cell has been visited, column and row of next cell are within bounds, and next cell
             is not a wall. */
-            if(){
+            else if(theMaze[row][col] == 3){
+                theMaze[row][col] = 7;
+                traverseMaze(theMaze, row, col-1);
             }
+            return false;
         }
     }
 
