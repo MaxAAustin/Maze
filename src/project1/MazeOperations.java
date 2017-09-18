@@ -34,10 +34,7 @@ public class MazeOperations {
         final int MBCHigh = 14, MBRHigh = 14;
         // variable to use for direction changes and traversing maze
 
-        boolean up = traverseMaze(theMaze, row+1,col);
-        boolean down = traverseMaze(theMaze, row-1,col);
-        boolean right = traverseMaze(theMaze, row,col+1);
-        boolean left = traverseMaze(theMaze, row,col-1);
+
 
         // Tests whether we are at the end of the maze. If yes, return true. If not, keep going.
         if ((row < MBRLow || row > MBRHigh) || (col < MBCLow || col > MBCHigh)|| theMaze[row][col]==0 ||
@@ -48,6 +45,10 @@ public class MazeOperations {
                 theMaze[14][14] = 7;
                 return true;
             }else {
+                boolean up = traverseMaze(theMaze, row+1,col);
+                boolean down = traverseMaze(theMaze, row-1,col);
+                boolean right = traverseMaze(theMaze, row,col+1);
+                boolean left = traverseMaze(theMaze, row,col-1);
                 //Go up
                 if (up){
                     theMaze[row][col] = 7;
