@@ -9,20 +9,24 @@ Visited Path = 2
  */
 
 public class MazeOperations {
-    public MazeOperations() {
-    }
 
     public static void fillMaze(int[][] theMaze, Scanner inputFile){
         for(int r = 0; r<= 14; r++){
-            for(int c = 0; c<=r; c++){
+            for(int c = 0; c<=14; c++){
                 theMaze[r][c] = inputFile.nextInt();
-                fillMaze(theMaze, inputFile);
+               // fillMaze(theMaze, inputFile);
             }
         }
     }
 
     public static void printMaze(int[][] theMaze){
-        System.out.println(theMaze);
+        for(int r = 0; r<= 14; r++){
+            for(int c = 0; c<=14; c++){
+                System.out.print(theMaze[r][c] +" ");
+                // fillMaze(theMaze, inputFile);
+            }
+            System.out.println();
+        }
 
     }
 
@@ -45,33 +49,36 @@ public class MazeOperations {
                 theMaze[14][14] = 7;
                 return true;
             }else {
-                boolean up = traverseMaze(theMaze, row+1,col);
-                boolean down = traverseMaze(theMaze, row-1,col);
-                boolean right = traverseMaze(theMaze, row,col+1);
-                boolean left = traverseMaze(theMaze, row,col-1);
-                //Go up
-                if (up){
-                    theMaze[row][col] = 7;
-                    return true;//set to 7
-                }
-                //Go down
-                else if (down) {
-                    theMaze[row][col] = 7;
+                theMaze[row][col]=3;
+                boolean up = traverseMaze(theMaze, row-1,col);
+                if( up){
+                    theMaze[row][col]=7;
                     return true;
                 }
-                //Go right
-                else if (right) {
-                    theMaze[row][col] = 7;
-                    return true;
+                else{
+                    boolean down = traverseMaze(theMaze, row+1,col);
+                    if(down){
+                        theMaze[row][col] = 7;
+                        return true;
+                    }
+                    else{
+                        boolean right = traverseMaze(theMaze, row,col+1);
+                        if(right){
+                            theMaze[row][col] = 7;
+                            return true;
+                        }else{
+                            boolean left = traverseMaze(theMaze, row,col-1);
+                            if(left){
+                                theMaze[row][col] = 7;
+                                return true;
+                            }
+                        }
+                    }
                 }
-                //Go left
-                else if (left) {
-                    theMaze[row][col] = 7;
-                    return true;
-                }
-                return false;
+
             }
         }
+        return false;
     }
 
 
