@@ -1,14 +1,27 @@
+/**
+*Name: Michael Austin
+	Project: Project 1
+	Lab Instructor: Domenick Poster
+	Date: 10/15/2017
+	Purpose: main method that is responsible for instantiating the array representing the matrix, prompting the user for a file name containing the maze contents and opening a Scanner attached to the file, and calling all of the other methods.
+**/
+
 package project1;
 
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class MazeFile {
     public MazeFile() {
     }
 
-    public static void main(String[] args) throws IOException{
+    /**
+     * Main method calls MazeOperations and throws a IOException if Scanner file name does not exist. Prints the Maze before and after traversing it.
+     * @param args
+     * @throws IOException
+     */
+    public static void main(String[] args) throws IOException {
         Scanner fileName = new Scanner(System.in);
         Scanner inputFile = null;
         int[][] theMaze =  new int[15][15];
